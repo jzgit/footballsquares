@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Football Squares</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/foundation.css">
+  <link rel="stylesheet" href="css/jquery.minicolors.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <script type="text/x-handlebars">
+  <nav class="top-bar" data-topbar>
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="#">Football Squares</a></h1>
+      </li>
+    </ul>
+
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <li class='color'>
+          {{view App.ColorPicker type='minicolors' placeholder="Background color" name="color" valueBinding="color"}}
+        </li>
+        <li class='spacer'>
+        </li>
+        <li class='spacer'>
+        </li>
+        <li class="name">
+          {{input type="text" value=owner placeholder='name'}}
+        </li>
+        <li class='spacer'>
+        </li>
+      </ul>
+    </section>
+  </nav>
+  <section role="main">
+      {{outlet}}
+  </section>
+  </script>
+
+  <script type="text/x-handlebars" id="index">
+    <ul class="small-block-grid-11">
+    {{#each controller}}
+      <li {{action 'select' this}} {{bind-attr class="selected"}}>
+        {{#unless 'corner'}}
+          <img {{bind-attr src="imageSrc"}}>
+        {{/unless}}
+      </li>
+    {{/each}}
+    </ul>
+  </script>
+
+  <script src="js/libs/jquery-1.10.2.js"></script>
+  <script src="js/libs/handlebars-1.1.2.js"></script>
+  <script src="js/libs/ember-1.3.1.js"></script>
+  <script src="js/libs/ember-data.js"></script>
+  <script src="js/libs/underscore.js"></script>
+  <script src="js/libs/jquery.minicolors.js"></script>
+  <script src="js/app.js"></script>
+  <!-- to activate the test runner, add the "?test" query string parameter -->
+  <script src="tests/runner.js"></script>
+</body>
+</html>
